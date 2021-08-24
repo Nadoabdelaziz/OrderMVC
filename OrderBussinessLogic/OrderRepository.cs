@@ -108,27 +108,6 @@ namespace Order.BL
         }
 
 
-        public OrderModel GetOrder(int id)
-        {
-            var listOfOrders =
-               (from objOrder in objOrdersEntities.Requsets
-                .Where(objOrder => objOrder.ItemID == id)
-                select new OrderModel()
-                {
-                    CompanyID = objOrder.CompanyID,
-                    Company_Name = objOrder.Company_Name,
-                    ItemID = (int)objOrder.ItemID,
-                    Item_Name = objOrder.Item_Name,
-                    Item_Quantity = (float)objOrder.Item_Quantity,
-                    Shipping_Instructions = objOrder.Shipping_instructions,
-                    Purchase_Price = (float)objOrder.Purchase_Price,
-                    Recurring_Order = objOrder.Recurring_Order,
-                    Pick_Up_Date = objOrder.Pick_Up_Date,
-
-
-                }).FirstOrDefault();
-            return listOfOrders;
-        }
-
+        
     }
 }

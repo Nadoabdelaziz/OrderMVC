@@ -44,7 +44,7 @@ namespace WebAppOrder.Controllers
             return RedirectToAction(actionName: "Index");
         }
 
-        public ActionResult Create() 
+        public ActionResult Create () 
         {
             return View();
         }
@@ -53,9 +53,10 @@ namespace WebAppOrder.Controllers
 
         public ActionResult Create (OrderModel order)
         {
+            int id = iOrderRepository.AddOrder(order);
+
             if (ModelState.IsValid)
             {
-                int id = iOrderRepository.AddOrder(order);
                 if (id > 0)
                 {
                     ModelState.Clear();
@@ -76,6 +77,12 @@ namespace WebAppOrder.Controllers
             var myorder = iOrderRepository.GetOrderByID(id);
             return View(myorder);
         }
+        public ActionResult Accept(int id)
+        {
+            var myorder = iOrderRepository.GetOrderByID(id);
+            return View(myorder);
+        }
+
 
 
 
