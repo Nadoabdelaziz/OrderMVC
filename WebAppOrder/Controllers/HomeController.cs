@@ -71,5 +71,13 @@ namespace WebAppOrder.Controllers
             return View(results);
         }
 
+        public ActionResult Details(int id)
+        {
+            var myorder = iOrderRepository.GetOrderByID(id);
+            return View(myorder);
+        }
+
+
+
     }
 }

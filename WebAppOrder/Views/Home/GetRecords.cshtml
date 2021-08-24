@@ -74,10 +74,10 @@
             @Html.DisplayFor(modelItem => item.Recurring_Order)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
+            @Html.ActionLink("Accept Order", "Edit", new { id=item.ItemID }) /
+            @Html.ActionLink("Details", "Details", new { id=item.ItemID }) 
+@*            @Html.ActionLink("Delete", "Delete", new { id=item.CompanyID })
+*@        </td>
     </tr>
 }
 
