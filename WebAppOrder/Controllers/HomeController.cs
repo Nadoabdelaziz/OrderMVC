@@ -21,7 +21,6 @@ namespace WebAppOrder.Controllers
         public ActionResult Index()
         {
 
-
             IEnumerable<OrderModel> listOfOrderModels = iOrderRepository.GetAllOrders();
             return View(listOfOrderModels);
         }
@@ -45,6 +44,32 @@ namespace WebAppOrder.Controllers
             return RedirectToAction(actionName: "Index");
         }
 
+        public ActionResult Create() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult Create (OrderModel order)
+        {
+            if (ModelState.IsValid)
+            {
+                int id = iOrderRepository.AddOrder(order);
+                if (id > 0)
+                {
+                    ModelState.Clear();
+                    ViewBag.Issuccess = "Data Added";
+                }
+            }
+            return View();
+        }
+
+        public ActionResult GetRecords()
+        {
+            var results = iOrderRepository.GetAllOrders();
+            return View(results);
+        }
 
     }
 }
